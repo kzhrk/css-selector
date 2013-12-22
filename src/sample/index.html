@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>Sample:::CSS Selectorを書こう</title>
+	<meta name="description" content="2013年12月21日 Creators MeetUP 11 発表資料">
+	<meta name="keywords" content="jquery,css,selector,kzhrk.com,kzhrk">
+	<meta name="copyright" content="Copyright &#169; kzhrk.com All Rights Reserved.">
+
+	<link rel="stylesheet" href="css/base.css" type="text/css">
+	<link rel="stylesheet" href="css/top.css" type="text/css">
+	<link rel="stylesheet" href="css/shCoreDefault.css" type="text/css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.cssSelector.min.js"></script>
+	<script type="text/javascript" src="js/site.min.js"></script>
+	<script type="text/javascript" src="js/shCore.js"></script>
+	<script type="text/javascript" src="js/shBrushJScript.js"></script>
+	<script type="text/javascript" src="js/shBrushCss.js"></script>
+	<script type="text/javascript" src="js/shBrushXml.js"></script>
+	<script type="text/javascript">
+		SyntaxHighlighter.config.tagName			= 'code';
+		SyntaxHighlighter.all();
+	</script>
+	<!--[if lt IE 9]><![endif]-->
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body id="top">
+	<div id="wrap">
+		<header id="commonHeader">
+			<h1>CSS Selectorを書こう</h1>
+		</header>
+		<div id="content">
+			<div id="main">
+				<section id="attribute" class="ModSection">
+					<h1 class="ModSectionHead">E[attribute=value]</h1>
+					<div class="ModSectionBlock">
+						<p>プロパティを持っているE要素を指定する。</p>
+					</div>
+					<h2 class="ModSectionHead2">表示</h2>
+					<div class="ModSectionBlock">
+						<ul>
+							<li><a href="#">LINK 01</a></li>
+							<li><a href="#" target="_blank">LINK 02</a></li>
+						</ul>
+						<style>
+							a:hover {
+								text-decoration: underline;
+							}
+							a[target=_blank] {
+								background: url("images/i_blank.gif") no-repeat right center;
+								padding-right: 18px;
+							}
+						</style>
+					</div>
+					<h2 class="ModSectionHead2">HTML</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: html;">
+								<!-- IE6 -->
+								<ul>
+									<li><a href="#">LINK 01</a></li>
+									<li><a href="#" target="_blank" class="blank">LINK 02</a></li>
+								</ul>
+
+								<!-- other -->
+								<ul>
+									<li><a href="#">LINK 01</a></li>
+									<li><a href="#" target="_blank">LINK 02</a></li>
+								</ul>
+							</code>
+						</div>
+					</div>
+					<h2 class="ModSectionHead2">CSS</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: css;">
+								// IE6
+								a.blank {
+									background: url("images/i_blank.gif") no-repeat right center;
+									padding-right: 18px;
+								}
+
+								// other
+								a[target=_blank] {
+									background: url("images/i_blank.gif") no-repeat right center;
+									padding-right: 18px;
+								}
+							</code>
+						</div>
+					</div>
+				</section>
+				<section id="firstChild" class="ModSection">
+					<h1 class="ModSectionHead">E:first-child</h1>
+					<div class="ModSectionBlock">
+						<p>兄弟要素で一番最初にくる要素。</p>
+					</div>
+					<h2 class="ModSectionHead2">表示</h2>
+					<div class="ModSectionBlock">
+						<ul class="ex-list">
+							<li>ITEM 1</li>
+							<li>ITEM 2</li>
+							<li>ITEM 3</li>
+						</ul>
+						<style>
+								ul.ex-list {
+									padding: 10px;
+									border: 1px solid #ccc;
+								}
+								ul.ex-list li {
+									padding-top: 10px;
+									margin-top: 10px;
+									border-top: 1px solid #ccc;
+								}
+								ul.ex-list li:first-child {
+									margin-top: 0;
+									padding-top: 0;
+									border-top: none;
+								}
+						</style>
+					</div>
+					<h2 class="ModSectionHead2">HTML</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: html;">
+								<!-- IE6 -->
+								<ul class="ex-list">
+									<li class="first">ITEM 1</li>
+									<li>ITEM 2</li>
+									<li>ITEM 3</li>
+								</ul>
+
+								<!-- other -->
+								<ul class="ex-list">
+									<li>ITEM 1</li>
+									<li>ITEM 2</li>
+									<li>ITEM 3</li>
+								</ul>
+							</code>
+						</div>
+					</div>
+					<h2 class="ModSectionHead2">CSS</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: css;">
+								// IE6
+								ul.ex-list li {
+									padding-top: 10px;
+									margin-top: 10px;
+									border-top: 1px solid #ccc;
+								}
+								ul.ex-list li.first {
+									margin-top: 0;
+									padding-top: 0;
+									border-top: none;
+								}
+
+								// other
+								ul.ex-list li {
+									padding-top: 10px;
+									margin-top: 10px;
+									border-top: 1px solid #ccc;
+								}
+								ul.ex-list li:first-child {
+									margin-top: 0;
+									padding-top: 0;
+									border-top: none;
+								}
+							</code>
+						</div>
+					</div>
+				</section>
+				<section id="child" class="ModSection">
+					<h1 class="ModSectionHead">E > F</h1>
+					<div class="ModSectionBlock">
+						<p>E要素の直下のF要素を指定する。</p>
+					</div>
+					<h2 class="ModSectionHead2">表示</h2>
+					<div class="ModSectionBlock">
+						<div class="ex-child">
+							<ul>
+								<li>
+									MENU 01
+									<ul>
+										<li>SUB MENU 01</li>
+										<li>SUB MENU 02</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<style>
+							.ex-child {
+								padding: 10px;
+								border: 1px solid #ccc;
+							}
+							.ex-child > ul > li {
+								background: url("images/i_ar.gif") no-repeat left top;
+								padding-left: 20px;
+							}
+							.ex-child > ul > li > ul > li {
+								padding: 5px 0;
+								margin: 10px 0 0 10px;
+								border-bottom: 1px dashed #333;
+							}
+						</style>
+					</div>
+					<h2 class="ModSectionHead2">HTML</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: html;">
+								<!-- IE6 -->
+								<div class="ex-child">
+									<ul>
+										<li class="menu-parent">
+											MENU 01
+											<ul>
+												<li class="menu-child">SUB MENU 01</li>
+												<li class="menu-child">SUB MENU 02</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+
+								<!-- other -->
+								<div class="ex-child">
+									<ul>
+										<li>
+											MENU 01
+											<ul>
+												<li>SUB MENU 01</li>
+												<li>SUB MENU 02</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</code>
+						</div>
+					</div>
+					<h2 class="ModSectionHead2">CSS</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: css;">
+								// IE6
+								.ex-child .menu-parent {
+									background: url("images/i_ar.gif") no-repeat left top;
+									padding-left: 20px;
+								}
+								.ex-child .menu-child {
+									padding: 5px 0;
+									margin: 10px 0 0 10px;
+									border-bottom: 1px dashed #333;
+								}
+
+								// other
+								.ex-child > ul > li {
+									background: url("images/i_ar.gif") no-repeat left top;
+									padding-left: 20px;
+								}
+								.ex-child > ul > li > ul > li {
+									padding: 5px 0;
+									margin: 10px 0 0 10px;
+									border-bottom: 1px dashed #333;
+								}
+							</code>
+						</div>
+					</div>
+				</section>
+				<section id="brother" class="ModSection">
+					<h1 class="ModSectionHead">E + F</h1>
+					<div class="ModSectionBlock">
+						<p>E要素の兄弟のF要素を指定する。</p>
+					</div>
+					<h2 class="ModSectionHead2">表示</h2>
+					<div class="ModSectionBlock">
+						<div class="ex-brother">
+							<h1>HEAD 01</h1>
+							<p>PARAGRAPH 01</p>
+							<p>PARAGRAPH 02</p>
+						</div>
+						<style>
+							.ex-brother {
+								padding: 10px;
+								border: 1px solid #333;
+							}
+							.ex-brother h1 {
+								font-size: 150%;
+								font-weight: 600;
+							}
+							.ex-brother p {
+								margin-top: 10px;
+							}
+							.ex-brother h1 + p {
+								margin-top: 20px;
+							}
+						</style>
+					</div>
+					<h2 class="ModSectionHead2">HTML</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: html;">
+								<!-- IE6 -->
+								<div class="ex-brother">
+									<h1>HEAD 01</h1>
+									<p class="first">PARAGRAPH 01</p>
+									<p>PARAGRAPH 02</p>
+								</div>
+
+								<!-- other -->
+								<div class="ex-brother">
+									<h1>HEAD 01</h1>
+									<p>PARAGRAPH 01</p>
+									<p>PARAGRAPH 02</p>
+								</div>
+							</code>
+						</div>
+					</div>
+					<h2 class="ModSectionHead2">CSS</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: css;">
+								// IE6
+								.ex-brother p {
+									margin-top: 10px;
+								}
+								.ex-brother p.first {
+									margin-top: 20px;
+								}
+
+								// other
+								.ex-brother p {
+									margin-top: 10px;
+								}
+								.ex-brother h1 + p {
+									margin-top: 20px;
+								}
+							</code>
+						</div>
+					</div>
+				</section>
+				<section id="nami" class="ModSection">
+					<h1 class="ModSectionHead">E ~ F</h1>
+					<div class="ModSectionBlock">
+						<p>E以降のすべての兄弟要素Fを指定する。</p>
+					</div>
+					<h2 class="ModSectionHead2">表示</h2>
+					<div class="ModSectionBlock">
+						<ol class="ex-nami">
+							<li>RANK 01</li>
+							<li>RANK 02</li>
+							<li class="rank3">RANK 03</li>
+							<li>RANK 04</li>
+							<li>RANK 05</li>
+						</ol>
+						<style>
+							.ex-nami li {
+								color: red;
+							}
+							.ex-nami li.rank3 ~ li {
+								color: blue;
+							}
+						</style>
+					</div>
+					<h2 class="ModSectionHead2">HTML</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: html;">
+								<!-- IE6 -->
+								<ol class="ex-nami">
+									<li>RANK 01</li>
+									<li>RANK 02</li>
+									<li>RANK 03</li>
+									<li class="rank-normal">RANK 04</li>
+									<li class="rank-normal">RANK 05</li>
+								</ol>
+
+								<!-- other -->
+								<ol class="ex-nami">
+									<li>RANK 01</li>
+									<li>RANK 02</li>
+									<li class="rank3">RANK 03</li>
+									<li>RANK 04</li>
+									<li>RANK 05</li>
+								</ol>
+							</code>
+						</div>
+					</div>
+					<h2 class="ModSectionHead2">CSS</h2>
+					<div class="ModSectionBlock">
+						<div>
+							<code class="brush: css;">
+								// IE6
+								.ex-nami li {
+									color: red;
+								}
+								.ex-nami .rank-normal {
+									color: blue;
+								}
+
+								// other
+								.ex-nami li {
+									color: red;
+								}
+								.ex-nami li.rank3 ~ li {
+									color: blue;
+								}
+							</code>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div id="side">
+				<nav>
+					<ul>
+						<li><a href="#attribute">E[attribute=value]</a></li>
+						<li><a href="#firstChild">E:first-child</a></li>
+						<li><a href="#child">E > F</a></li>
+						<li><a href="#brother">E + F</a></li>
+						<li><a href="#nami">E ~ F</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<footer id="commonFooter">
+			<address>Copyright &copy; <a href="http://kzhrk.com/">kzhrk.com</a> Ltd, All Rights Reserved.</address>
+		</footer>
+	</div>
+</body>
+</html>
