@@ -2,3 +2,5 @@ node_modules/
 .sass-cache/
 .ftppass
 .DS_Store
+Gruntfile.js
+package.json

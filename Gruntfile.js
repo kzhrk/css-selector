@@ -15,43 +15,33 @@ module.exports = function(grunt) {
    */
   grunt.initConfig({
     dir : {
-      stylus: 'src/sample/styl',
-      css   : 'src/sample/css'
+      stylus: 'styl',
+      css   : 'css'
     },
     connect: {
       server: {
         options: {
           port: 9001,
-          base: 'src/sample',
-          livereload: 35729
-        }
-      },
-      slide: {
-        options: {
-          port: 9002,
-          base: 'src/slide',
+          base: '',
           livereload: 35729
         }
       }
     },
     watch: {
       html: {
-        files: ['src/**/*', 'slide/**/*']
+        files: ['**/*']
       },
       options: {
         livereload: 35729
       }
     },
     stylus: {
-      compile: {
-        files: {
-          '<%= dir.css %>/top.css': '<%= dir.stylus %>/content/top.styl',
-          '<%= dir.css %>/print.css': '<%= dir.stylus %>/print.styl',
-          '<%= dir.css %>/base.css': '<%= dir.stylus %>/base.styl'
-        },
-        options: {
-          compress: true
-        }
+      base: {
+        cwd: 'styl',
+        expand: true,
+        src: ['**/*.styl'],
+        dest: 'css/',
+        ext: '.css'
       }
     }
   });
