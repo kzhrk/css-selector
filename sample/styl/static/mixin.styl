@@ -1,0 +1,22 @@
+//	clearfix
+//----------------------------------------------------------------------------------//
+clearfix()
+	if supportIe6 is true or supportIe7 is true
+		*zoom: 1;
+
+	&:after
+		content: "";
+		display: block;
+		clear: both;
+
+//	font-size
+//----------------------------------------------------------------------------------//
+font-size( f1, f2 = false )
+
+	if f2 is false
+		font-size: f1
+	else
+		font-size: (f1/f2)*100%
+
+//	font-family
+//----------------------------------------------------------------------------------//
